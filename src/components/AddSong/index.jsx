@@ -10,7 +10,7 @@ function AddSong() {
     }
 
     return (
-        <div /*style={{display: "flex", alignItems:"center"}}*/>
+        <div style={{display: "flex", alignItems:"center"}}>
             <Dialog
                 sx={{ textAlign: "center"}}
                 open={dialog}

@@ -6,7 +6,7 @@ import SongPlayer from '../SongPlayer';
 
 function App() {
   return (
-    <div className="App" >
+    <div style={{ backgroundColor: "#2A2A2A" }} >
       <Header />
           
       <Grid container spacing={3} 
