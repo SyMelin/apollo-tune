@@ -1,8 +1,9 @@
 import { Delete } from "@mui/icons-material"
-import { Avatar, Typography, IconButton } from "@mui/material"
+import { Avatar, Typography, IconButton, useMediaQuery } from "@mui/material"
 
 function AwaitingSong({ song }) {
     const { thumbnail, artist, title } = song
+
     return (
         <div style={{
             display: 'grid',
@@ -29,13 +30,15 @@ function AwaitingSong({ song }) {
 }
 
 function Playlist() {
+    const greaterThanMedium = useMediaQuery(theme => theme.breakpoints.up('md'))
+
     const song = {
         title: "LÜNE",
         artist: "MÖÖN",
         thumbnail: "http://img.youtube.com/vi/--ZtUFsIgMk/0.jpg"
     }
 
-    return (
+    return greaterThanMedium && (
         <div style={{ margin: '10px 0' }}>
             <Typography color="textSecondary" variant="button">
                 PLAYLIST(5)
