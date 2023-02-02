@@ -6,13 +6,13 @@ import SongPlayer from '../SongPlayer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <Header />
-      <Grid container spacing={3}>
-        <Grid
-          sx={{
-            paddingTop: 80
-          }}
+          
+      <Grid container spacing={3} 
+      sx={{ paddingTop: "80px"}}
+      >
+        <Grid 
           item
           xs={12}
           md={7}

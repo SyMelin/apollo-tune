@@ -10,7 +10,7 @@ function AddSong() {
     }
 
     return (
-        <div style={{display: "flex", alignItems:"center"}}>
+        <div /*style={{display: "flex", alignItems:"center"}}*/>
             <Dialog
                 sx={{ textAlign: "center"}}
                 open={dialog}
@@ -42,7 +42,7 @@ function AddSong() {
                         fullWidth
                     />
                 </DialogContent>
-                <DialogActions>
+                <DialogActions sx={{ display: "flex", justifyContent: "space-between"}}>
                     <Button
                         color="secondary"
                         onClick={handleCloseDialog}
@@ -59,21 +59,21 @@ function AddSong() {
                 </DialogActions>
             </Dialog>
             <TextField
-                sx={{ margin: "2px"}}
+                sx={{ margin: "12px"}}
                 placeholder="Add Youtube or Soundcloud URL"
                 fullWidth
                 maring="normal"
                 type="url"
                 InputProps={{
                     startAdornment: (
-                        <InputAdornment>
+                        <InputAdornment position="start">
                             <Link />
                         </InputAdornment>
                     )
                 }}
             />
             <Button
-                sx={{ margin: "2px"}}
+                sx={{ margin: "12px"}}
                 variant="contained"
                 color="primary"
                 endIcon={<AddBoxOutlined />}
