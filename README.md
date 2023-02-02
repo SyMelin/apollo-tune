@@ -1,4 +1,4 @@
-# Exercise Project - apollo-music-share
+# Exercise Project - apollo-tune
 
 The purpose of this project is to learn MaterialUI and qraphQL while practising and exercising my React skills.
 

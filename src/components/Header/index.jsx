@@ -1,18 +1,17 @@
-//import { AppBar, Toolbar, Typography } from '@mui/material'
-//import { HeadsetTwoTone } from '@mui/icons-material'
+import { AppBar, Toolbar, Typography } from '@mui/material'
+import { HeadsetTwoTone } from '@mui/icons-material'
 
 function Header() {
 
     return (
-        <div></div>
-        /*<AppBar color="primary" position="fixed">
+        <AppBar color="primary" position="fixed">
             <Toolbar>
                 <HeadsetTwoTone />
-                <Typography sx={{ marginLeft: "18px"}} variant="h6" component="h1">
+                <Typography sx={{ marginLeft: "18px" }} variant="h6" component="h1">
                     Apollo Music Share
                 </Typography>
             </Toolbar>
-        </AppBar>*/
+        </AppBar>
     )
 }
 

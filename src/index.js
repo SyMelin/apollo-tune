@@ -1,19 +1,17 @@
-//import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-//import theme from './theme';
+import theme from './theme';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <>
-   {/*<ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-</ThemeProvider>*/}
-<App />
-</>, document.getElementById('root')
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </ThemeProvider>
+, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
