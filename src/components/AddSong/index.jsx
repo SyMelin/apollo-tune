@@ -12,8 +12,12 @@ import {
 import ReactPlayer from "react-player"
 import SoundCloudPlayer from "react-player/soundcloud"
 import YouTubePlayer from "react-player/youtube"
+import { useMutation } from "@apollo/client"
+import { ADD_SONG } from "../../graphql/mutations"
 
 function AddSong() {
+    const [addSong] = useMutation(ADD_SONG)
+
     const [url, setUrl] = useState('')
     const [playable, setPlayable] = useState(false)
     const [dialog, setDialog] = useState(false)
@@ -31,6 +35,24 @@ function AddSong() {
 
     function handleCloseDialog() {
         setDialog(false)
+    }
+
+    async function handleAddSong() {
+        try {
+            const { url, thumbnail, duration, title, artist } = song
+
+            await addSong({
+                variables: {
+                    url: url.length > 0 ? url : null,
+                    thumbnail: thumbnail.length > 0 ? thumbnail : null,
+                    duration: duration > 0 ? duration : null,
+                    title: title.length > 0 ? title : null,
+                    artist: artist.length > 0 ? artist : null
+            }
+        })
+        } catch (error) {
+            console.error("Error addding song", song)
+        }
     }
 
     function handleChangeSong(e) {
@@ -129,7 +151,7 @@ function AddSong() {
                 <DialogActions
                     sx={{
                         display: "flex",
-                        justifyContent: "space-between"
+                        justifyContent: "flex-end"
                     }}
                 >
                     <Button
@@ -141,7 +163,7 @@ function AddSong() {
                     <Button
                         variant="outlined"
                         color="primary"
-                        onClick={handleCloseDialog}
+                        onClick={handleAddSong}
                     >
                         Add song
                     </Button>
