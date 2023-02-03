@@ -15,18 +15,20 @@ import YouTubePlayer from "react-player/youtube"
 import { useMutation } from "@apollo/client"
 import { ADD_SONG } from "../../graphql/mutations"
 
+const DEFAULT_SONG = {
+    duration: 0,
+    title: "",
+    artist: "",
+    thumbnail: ""
+}
+
 function AddSong() {
     const [addSong] = useMutation(ADD_SONG)
 
     const [url, setUrl] = useState('')
     const [playable, setPlayable] = useState(false)
     const [dialog, setDialog] = useState(false)
-    const [song, setSong] = useState({
-        duration: 0,
-        title: "",
-        artist: "",
-        thumbnail: ""
-    })
+    const [song, setSong] = useState(DEFAULT_SONG)
 
     useEffect(() => {
         const isPlayable = SoundCloudPlayer.canPlay(url) || YouTubePlayer.canPlay(url)
@@ -50,8 +52,11 @@ function AddSong() {
                     artist: artist.length > 0 ? artist : null
             }
         })
+        handleCloseDialog()
+        setSong(DEFAULT_SONG)
+        setUrl("")
         } catch (error) {
-            console.error("Error addding song", song)
+            console.error("Error adding song", song)
         }
     }
 
