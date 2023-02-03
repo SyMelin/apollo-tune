@@ -33,6 +33,14 @@ function AddSong() {
         setDialog(false)
     }
 
+    function handleChangeSong(e) {
+        const { name, value } = e.target
+        setSong(prevSong => ({
+            ...prevSong,
+            [name]: value
+        }))
+    }
+
     function getYoutubeInfo(player) {
         const duration = player.getDuration()
         const { title, video_id, author } = player.getVideoData()
@@ -71,6 +79,7 @@ function AddSong() {
         setSong({...songData, url})
     }
 
+    console.log("songData", song)
     const { thumbnail, title, artist } = song
 
     return (
@@ -94,6 +103,7 @@ function AddSong() {
                     />
                     <TextField
                         value={title}
+                        onChange={handleChangeSong}
                         margin="dense"
                         name="title"
                         label="Title"
@@ -101,13 +111,15 @@ function AddSong() {
                     />
                     <TextField
                         value={artist}
+                        onChange={handleChangeSong}
                         margin="dense"
-                        name="artiste"
-                        label="Artiste"
+                        name="artist"
+                        label="Artist"
                         fullWidth
                     />
                     <TextField
                         value={thumbnail}
+                        onChange={handleChangeSong}
                         margin="dense"
                         name="thumbnail"
                         label="Thumbnail"
