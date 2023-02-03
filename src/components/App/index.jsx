@@ -7,7 +7,7 @@ import SongPlayer from '../SongPlayer';
 function App() {
   const greaterThanSmall = useMediaQuery(theme => theme.breakpoints.up('sm'))
   const greaterThanMedium = useMediaQuery(theme => theme.breakpoints.up('md'))
-
+  
   return (
     <div style={{ backgroundColor: "#2A2A2A" }} >
       <Hidden only="xs">

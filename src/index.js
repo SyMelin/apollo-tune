@@ -1,16 +1,20 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import theme from './theme';
+import { ApolloProvider } from '@apollo/client'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './components/App'
+import client from './graphql/client'
+import theme from './theme'
 
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ApolloProvider client={client}>
+    <ThemeProvider theme={theme}>
    {/* <CssBaseline />*/ }
     <App />
   </ThemeProvider>
+  </ApolloProvider>
 , document.getElementById('root')
 );
 
