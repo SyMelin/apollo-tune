@@ -23,7 +23,7 @@ const DEFAULT_SONG = {
 }
 
 function AddSong() {
-    const [addSong] = useMutation(ADD_SONG)
+    const [addSong, { error }] = useMutation(ADD_SONG)
 
     const [url, setUrl] = useState('')
     const [playable, setPlayable] = useState(false)
@@ -56,7 +56,7 @@ function AddSong() {
         setSong(DEFAULT_SONG)
         setUrl("")
         } catch (error) {
-            console.error("Error adding song", song)
+            console.log("Error adding song", error)
         }
     }
 
@@ -106,9 +106,12 @@ function AddSong() {
         setSong({...songData, url})
     }
 
-    console.log("songData", song)
-    const { thumbnail, title, artist } = song
+    function handleError(field) {
+        return error && error.graphQLErrors[0]?.extensions?.path.includes(field)
+    }
 
+    const { thumbnail, title, artist } = song
+    //console.dir(error)
     return (
         <div
             style={{
@@ -135,6 +138,8 @@ function AddSong() {
                         name="title"
                         label="Title"
                         fullWidth
+                        error={handleError('title')}
+                        helperText={handleError('title') && "Fill out field"}
                     />
                     <TextField
                         value={artist}
@@ -143,6 +148,8 @@ function AddSong() {
                         name="artist"
                         label="Artist"
                         fullWidth
+                        error={handleError('artist')}
+                        helperText={handleError('artist') && "Fill out field"}
                     />
                     <TextField
                         value={thumbnail}
@@ -151,6 +158,8 @@ function AddSong() {
                         name="thumbnail"
                         label="Thumbnail"
                         fullWidth
+                        error={handleError('thumbnail')}
+                        helperText={handleError('thumbnail') && "Fill out field"}
                     />
                 </DialogContent>
                 <DialogActions
