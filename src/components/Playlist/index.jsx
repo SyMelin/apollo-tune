@@ -15,7 +15,7 @@ function AwaitingSong({ song }) {
         }}>
             <Avatar sx={{width: '44px', height: '44px'}} src={thumbnail} alt="Song thumbnail" />
             <div style={{ overflow: 'hidden', whiteSpace: 'nowrap'}}>
-                <Typography sx={{textOverflow: 'ellipsis', overflow: 'hidden'}} variant="subtitle2">
+                <Typography sx={{textOverflow: 'ellipsis', overflow: 'hidden'}} color="textPrimary" variant="subtitle2">
                     {title}
                 </Typography>
                 <Typography sx={{textOverflow: 'ellipsis', overflow: 'hidden'}} color="textSecondary" variant="body2">
