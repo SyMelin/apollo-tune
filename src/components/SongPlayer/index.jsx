@@ -1,11 +1,15 @@
 import { useContext } from "react"
-import { PlayArrow, SkipNext, SkipPrevious } from "@mui/icons-material"
+import { Pause, PlayArrow, SkipNext, SkipPrevious } from "@mui/icons-material"
 import { Card, CardContent, CardMedia, IconButton, Slider, Typography } from "@mui/material"
 import { SongContext } from "../App"
 import Playlist from "../Playlist"
 
 function SongPlayer() {
-    const { state } = useContext(SongContext)
+    const { state, dispatch } = useContext(SongContext)
+
+    function handleTogglePlay() {
+        dispatch(state.isPlaying ? { type: "PAUSE_SONG"} :  {type: "PLAY_SONG"})
+    }
 
     return (
         <>
@@ -23,8 +27,11 @@ function SongPlayer() {
                         <IconButton>
                             <SkipPrevious />
                         </IconButton>
-                        <IconButton>
-                            <PlayArrow sx={{ width: '38px', height: '38px' }}/>
+                        <IconButton onClick={handleTogglePlay}>
+                            { state.isPlaying
+                            ? <Pause sx={{ width: '38px', height: '38px' }}/>
+                            :<PlayArrow sx={{ width: '38px', height: '38px' }}/>
+                            }
                         </IconButton>
                         <IconButton>
                             <SkipNext />
